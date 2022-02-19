@@ -56,6 +56,8 @@ static void MX_GPIO_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+extern struct netif gnetif;
+
 /* USER CODE END 0 */
 
 /**
@@ -107,6 +109,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  ethernetif_input(&gnetif);
+	  sys_check_timeouts();
   }
   /* USER CODE END 3 */
 }
