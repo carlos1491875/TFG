@@ -83,7 +83,7 @@ SECTIONS
     *(.rodata)         /* .rodata sections (constants, strings, etc.) */
     *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
     . = ALIGN(4);
-  } >FLASH
+  } >RAM
 
   .ARM.extab   : {
     . = ALIGN(4);
@@ -180,6 +180,21 @@ SECTIONS
     libm.a ( * )
     libgcc.a ( * )
   }
+
+  .lwip_sec (NOLOAD) : 
+  {
+    . = ABSOLUTE(0x20020000);
+    *(.RxDecripSection) 
+    
+    . = ABSOLUTE(0x20020080);
+    *(.TxDecripSection)
+    
+    . = ABSOLUTE(0x20020100);
+    *(.RxArraySection) 
+
+    . = ABSOLUTE(0x200218D0);
+    *(.TxArraySection)     
+  } >RAM
 
   .ARM.attributes 0 : { *(.ARM.attributes) }
 }
