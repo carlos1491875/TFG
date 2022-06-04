@@ -83,7 +83,7 @@ SECTIONS
     *(.rodata)         /* .rodata sections (constants, strings, etc.) */
     *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
     . = ALIGN(4);
-  } >RAM
+  } >FLASH
 
   .ARM.extab   : {
     . = ALIGN(4);
